@@ -62,14 +62,9 @@ public class SalesItem
      */
     public boolean addComment(String author, String text, int rating)
     {
-        if(ratingInvalid(rating)) {  // reject invalid ratings
-            return false;
+        while(ratingInvalid(rating) && findCommentByAuthor(author) != null){
+        return false;
         }
-        
-        if(findCommentByAuthor(author) != null) {  // reject mutiple comments 
-            return false;                          // by same author
-        }
-        
         comments.add(new Comment(author, text, rating));
         return true;
     }
@@ -80,7 +75,7 @@ public class SalesItem
      */
     public void removeComment(int index)
     {
-        if(index >=0 && index < comments.size()) { // if index is valid
+        while(index >=0 && index < comments.size()) { // if index is valid
             comments.remove(index);
         }
     }
@@ -91,7 +86,7 @@ public class SalesItem
      */
     public void upvoteComment(int index)
     {
-        if(index >=0 && index < comments.size()) { // if index is valid
+        while(index >=0 && index < comments.size()) { // if index is valid
             comments.get(index).upvote();
         }
     }
@@ -102,7 +97,7 @@ public class SalesItem
      */
     public void downvoteComment(int index)
     {
-        if(index >=0 && index < comments.size()) { // if index is valid
+        while(index >=0 && index < comments.size()) { // if index is valid
             comments.get(index).downvote();
         }
     }
@@ -175,11 +170,10 @@ public class SalesItem
     {
         int dollars = price / 100;
         int cents = price - (dollars*100);
-        if(cents <= 9) {
+        while(cents <= 9) {
             return "$" + dollars + ".0" + cents;  // add zero padding
         }
-        else {
             return "$" + dollars + "." + cents;
         }
     }
-}
+

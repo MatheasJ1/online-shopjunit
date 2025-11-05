@@ -14,8 +14,9 @@ public class SalesItemTest
     /**
      * Default constructor for test class SalesItemTest
      */
-    public SalesItemTest()
+    public SalesItemTest(String name, int price)
     {
+        
     }
 
     /**
@@ -92,6 +93,37 @@ public class SalesItemTest
         assertEquals(false, salesIte1.addComment("m", "m", 0));
         assertEquals(false, salesIte1.addComment("mj", "mj", 6));
     }
+
+    @Test
+    public void testbestcomment()
+    {
+        SalesItem salesIte2 = new SalesItem("can", 40);
+        salesIte2.upvoteComment(1);
+        salesIte2.upvoteComment(1);
+        salesIte2.showInfo();
+        assertEquals(true, salesIte2.addComment("mj", "test", 3));
+        salesIte2.upvoteComment(1);
+        salesIte2.upvoteComment(1);
+        salesIte2.showInfo();
+        salesIte2.upvoteComment(0);
+        salesIte2.showInfo();
+        assertEquals(true, salesIte2.findMostHelpfulComment());
+    }
+
+    @Test
+    public void testGetterMethods()
+    {
+        SalesItem salesIte1 = new SalesItem("can", 30);
+        assertEquals(true, salesIte1.addComment("a", "text", 3));
+        assertEquals(true, salesIte1.addComment("mj", "thats great", 3));
+        assertEquals(true, salesIte1.addComment("mjj", "blabla", 5));
+        assertEquals(true, salesIte1.getName());
+        assertEquals(true, salesIte1.getNumberOfComments());
+        assertEquals(false, salesIte1.getPrice());
+        salesIte1.showInfo();
+    }
 }
+
+
 
 
