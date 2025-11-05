@@ -69,4 +69,20 @@ public class SalesItemTest
         assertEquals("test name", salesIte1.getName());
         assertEquals(1000, salesIte1.getPrice());
     }
+
+    @Test
+    public void testDuplicateComment()
+    {
+        Comment first = new Comment("m", "m", 3);
+        Comment duplicate = new Comment("m", "m", 3);
+    }
+
+    @Test
+    public void testPost()
+    {
+        SalesItem salesIte1 = new SalesItem("can", 3);
+        assertEquals(true, salesIte1.addComment("m", "m", 3));
+        assertEquals(true, salesIte1.addComment("m", "m", 3));
+    }
 }
+
