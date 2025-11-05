@@ -18,7 +18,6 @@ public class CommentTest
      */
     public CommentTest()
     {
-        
     }
 
     /**
@@ -40,4 +39,17 @@ public class CommentTest
     public void tearDown()
     {
     }
+
+    @Test
+    public void testAuthorRating()
+    {
+        SalesItem salesIte1 = new SalesItem("can", 40);
+        assertEquals(true, salesIte1.addComment("m", "m", 4));
+        Comment comment1 = new Comment("mm", "test", 40);
+        comment1.upvote();
+        comment1.upvote();
+        comment1.upvote();
+        comment1.downvote();
+    }
 }
+

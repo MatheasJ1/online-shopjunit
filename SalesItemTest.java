@@ -84,5 +84,14 @@ public class SalesItemTest
         assertEquals(true, salesIte1.addComment("m", "m", 3));
         assertEquals(true, salesIte1.addComment("m", "m", 3));
     }
+
+    @Test
+    public void testRating()
+    {
+        SalesItem salesIte1 = new SalesItem("bla", 40);
+        assertEquals(false, salesIte1.addComment("m", "m", 0));
+        assertEquals(false, salesIte1.addComment("mj", "mj", 6));
+    }
 }
+
 
